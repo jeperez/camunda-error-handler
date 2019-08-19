@@ -1,0 +1,14 @@
+#Camunda
+camunda:
+  bpm:
+    admin-user:
+      id: a
+      password: 1
+      firstName: Rashad
+    filter:
+      create: All tasks
+    jpa:
+      enabled: true
+    enabled: true
+    auto-deployment-enabled: true
+    deployment-resource-pattern: 'classpath:bpmn/*.bpmn'
