@@ -26,5 +26,6 @@ public class AccountInfo implements JavaDelegate {
         execution.setVariable("balance", 0);
         execution.setVariable("blockamount", 0);
         execution.setVariable("credit", true);
+        execution.setVariable("eyesColor" , "red" );
     }
 }

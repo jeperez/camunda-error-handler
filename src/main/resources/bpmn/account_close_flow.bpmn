@@ -108,7 +108,7 @@
       <bpmn:sequenceFlow id="SequenceFlow_0g26ygm" sourceRef="ExclusiveGateway_1ecegj7" targetRef="ExclusiveGateway_19mh47s" />
       <bpmn:sequenceFlow id="SequenceFlow_0191xc1" sourceRef="ExclusiveGateway_19mh47s" targetRef="ExclusiveGateway_1r6lfym" />
       <bpmn:sequenceFlow id="SequenceFlow_1lti21g" sourceRef="ExclusiveGateway_19mh47s" targetRef="EndEvent_1ynznnh">
-        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${testEntity.eyesColor == 'blue'}</bpmn:conditionExpression>
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${eyesColor != 'blue'}</bpmn:conditionExpression>
       </bpmn:sequenceFlow>
       <bpmn:endEvent id="EndEvent_1ynznnh">
         <bpmn:incoming>SequenceFlow_1lti21g</bpmn:incoming>
