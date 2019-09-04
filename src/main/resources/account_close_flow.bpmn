@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1qzsaq4" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.2.1">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1qzsaq4" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.2.2">
   <bpmn:process id="account_close_flow" name="Account Close Flow " isExecutable="true">
     <bpmn:startEvent id="StartAccountCloseProcess">
       <bpmn:outgoing>SequenceFlow_04psf2l</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:endEvent id="EndEvent_11bfmsm">
-      <bpmn:incoming>SequenceFlow_1hqin4j</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_17cph0s</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="SequenceFlow_1hqin4j" sourceRef="Task_0xvryu5" targetRef="EndEvent_11bfmsm" />
+    <bpmn:sequenceFlow id="SequenceFlow_1hqin4j" sourceRef="Task_0xvryu5" targetRef="close_account_message" />
     <bpmn:serviceTask id="Task_0xvryu5" name="closeAcc" camunda:delegateExpression="${closeAcc}">
       <bpmn:incoming>SequenceFlow_0v94m5k</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1hqin4j</bpmn:outgoing>
@@ -182,6 +182,11 @@
     </bpmn:boundaryEvent>
     <bpmn:sequenceFlow id="SequenceFlow_0luay77" sourceRef="BoundaryEvent_08ixotw" targetRef="EndEvent_1lggru8" />
     <bpmn:sequenceFlow id="SequenceFlow_0jxqd5n" sourceRef="BoundaryEvent_0p8iti7" targetRef="EndEvent_0vi24pl" />
+    <bpmn:sequenceFlow id="SequenceFlow_17cph0s" sourceRef="close_account_message" targetRef="EndEvent_11bfmsm" />
+    <bpmn:receiveTask id="close_account_message" name="Receive Message" messageRef="Message_0y67z5s">
+      <bpmn:incoming>SequenceFlow_1hqin4j</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_17cph0s</bpmn:outgoing>
+    </bpmn:receiveTask>
   </bpmn:process>
   <bpmn:error id="Error_14cff8a" name="Error-CheckNoneAZNOperationIsExist" errorCode="123" />
   <bpmn:error id="Error_07ifuhd" name="Error-CheckIfBalanceIsNotNull" errorCode="124" />
@@ -191,6 +196,7 @@
   <bpmn:signal id="Signal_052c7qk" name="Signal_1ufn7f2" />
   <bpmn:error id="Error_1q1hn8y" name="Error_1a2lflcXXXX" errorCode="sadasd" />
   <bpmn:error id="Error_02ygcef" name="ErrorEyesAreBlue" errorCode="ErrorEyesAreBlue" />
+  <bpmn:message id="Message_0y67z5s" name="close_account_message" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="account_close_flow">
       <bpmndi:BPMNShape id="StartEvent_1oo3i6k_di" bpmnElement="StartAccountCloseProcess">
@@ -215,11 +221,11 @@
         <dc:Bounds x="534" y="119" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="EndEvent_11bfmsm_di" bpmnElement="EndEvent_11bfmsm">
-        <dc:Bounds x="1832" y="343" width="36" height="36" />
+        <dc:Bounds x="2032" y="343" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_1hqin4j_di" bpmnElement="SequenceFlow_1hqin4j">
         <di:waypoint x="1760" y="361" />
-        <di:waypoint x="1832" y="361" />
+        <di:waypoint x="1850" y="361" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="ServiceTask_1mqv293_di" bpmnElement="Task_0xvryu5">
         <dc:Bounds x="1660" y="321" width="100" height="80" />
@@ -442,6 +448,13 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="EndEvent_1xwhuld_di" bpmnElement="EndEvent_1ynznnh">
         <dc:Bounds x="836" y="762" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_17cph0s_di" bpmnElement="SequenceFlow_17cph0s">
+        <di:waypoint x="1950" y="361" />
+        <di:waypoint x="2032" y="361" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ReceiveTask_11uwftm_di" bpmnElement="close_account_message">
+        <dc:Bounds x="1850" y="321" width="100" height="80" />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
